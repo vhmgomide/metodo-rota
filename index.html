@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exemplo de case — portfólio RO³TA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f0f0f;
+    --panel: #171717;
+    --gold: #c9a84c;
+    --text: #ededed;
+    --muted: #8a8a86;
+    --border: rgba(201,168,76,0.25);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    padding: 48px 24px 64px;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; }
+  .eyebrow {
+    color: var(--gold);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin: 0 0 12px;
+  }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 1.25;
+    margin: 0 0 8px;
+  }
+  .context {
+    color: var(--muted);
+    font-size: 15px;
+    margin: 0 0 32px;
+  }
+  .compare-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: #000;
+  }
+  .slide-layer {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .slide-layer .tag {
+    position: absolute;
+    top: 14px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .slide-before {
+    background: #f4f2ec;
+    padding: 36px 40px;
+  }
+  .slide-before .tag { left: 16px; color: #8a8a86; }
+  .slide-before h2 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #1f3864;
+    margin: 0 0 14px;
+    border-bottom: 2px solid #1f3864;
+    padding-bottom: 8px;
+  }
+  .slide-before ul {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 11px;
+    line-height: 1.8;
+    color: #333;
+  }
+  .slide-after {
+    background: #0f0f0f;
+    padding: 40px 48px;
+    clip-path: inset(0 50% 0 0);
+  }
+  .slide-after .tag { right: 16px; color: var(--gold); }
+  .slide-after .headline {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1.35;
+    color: var(--text);
+    margin: 0 0 20px;
+    max-width: 90%;
+  }
+  .slide-after .stats {
+    display: flex;
+    gap: 28px;
+  }
+  .slide-after .stat b {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--gold);
+  }
+  .slide-after .stat span {
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .divider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: var(--gold);
+    pointer-events: none;
+  }
+  .handle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    font-size: 13px;
+    color: #0f0f0f;
+    font-weight: 700;
+  }
+  input.slider-control {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: col-resize;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .caption {
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+  .caption strong { color: var(--text); font-weight: 500; }
+  .mode-toggle {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .mode-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    padding: 7px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  .mode-btn.active { border-color: var(--gold); color: var(--gold); }
+  .compare-wrap.mode-side {
+    display: flex;
+    align-items: stretch;
+    gap: 12px;
+    aspect-ratio: auto;
+    overflow: visible;
+  }
+  .compare-wrap.mode-side .slide-layer {
+    position: relative;
+    flex: 1 1 50%;
+    aspect-ratio: auto;
+    height: auto;
+    clip-path: none !important;
+    border-radius: 8px;
+    overflow: visible;
+    justify-content: flex-start;
+  }
+  .compare-wrap.mode-side .slide-before { padding: 26px 24px 22px; }
+  .compare-wrap.mode-side .slide-before h2 {
+    font-size: 14px;
+    margin: 6px 0 10px;
+    padding-bottom: 6px;
+  }
+  .compare-wrap.mode-side .slide-before ul { font-size: 10.5px; line-height: 1.65; }
+  .compare-wrap.mode-side .slide-after { padding: 26px 24px 22px; }
+  .compare-wrap.mode-side .slide-after .headline {
+    font-size: 16px;
+    max-width: 100%;
+    margin: 6px 0 16px;
+  }
+  .compare-wrap.mode-side .slide-after .stats { gap: 16px; }
+  .compare-wrap.mode-side .slide-after .stat b { font-size: 16px; }
+  .compare-wrap.mode-side .divider,
+  .compare-wrap.mode-side .handle,
+  .compare-wrap.mode-side .slider-control { display: none; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="eyebrow">Case reconstruído · RO³TA</p>
+    <h1>Aula pública — concurso de professor titular</h1>
+    <p class="context">Arraste o divisor para comparar o slide original com a reconstrução RO³TA.</p>
+
+    <div class="mode-toggle" role="group" aria-label="Modo de visualização">
+      <button type="button" class="mode-btn active" id="btnSlider">Slider</button>
+      <button type="button" class="mode-btn" id="btnSide">Lado a lado</button>
+    </div>
+
+    <div class="compare-wrap" id="compareWrap">
+      <div class="slide-layer slide-before">
+        <span class="tag">Antes</span>
+        <h2>Trajetória Acadêmica e Linha de Pesquisa</h2>
+        <ul>
+          <li>Graduação em Engenharia pela UF (2008–2012)</li>
+          <li>Mestrado em Engenharia de Sistemas, ênfase em otimização de processos (2013–2015)</li>
+          <li>Doutorado com foco em modelos preditivos aplicados à manufatura (2016–2020)</li>
+          <li>12 artigos publicados em periódicos Qualis A1/A2</li>
+          <li>Participação em 8 projetos de pesquisa financiados por agências de fomento</li>
+          <li>Orientação de 15 trabalhos de conclusão e 4 dissertações de mestrado</li>
+          <li>10 anos de experiência docente em graduação e pós-graduação</li>
+        </ul>
+      </div>
+      <div class="slide-layer slide-after" id="afterLayer">
+        <span class="tag">Depois</span>
+        <p class="headline">Uma década conectando pesquisa e prática: de modelos preditivos a decisões reais de manufatura.</p>
+        <div class="stats">
+          <div class="stat"><b>12</b><span>artigos</span></div>
+          <div class="stat"><b>8</b><span>projetos</span></div>
+          <div class="stat"><b>19</b><span>orientações</span></div>
+        </div>
+      </div>
+      <div class="divider" id="divider"></div>
+      <div class="handle" id="handle">↔</div>
+      <input type="range" class="slider-control" min="0" max="100" value="50" id="sliderControl" aria-label="Comparar antes e depois">
+    </div>
+
+    <p class="caption"><strong>O porquê:</strong> o antes tenta provar tudo de uma vez, sete linhas competindo pela mesma atenção. O depois escolhe uma única ideia e deixa os números como prova, não como protagonista — informação aos poucos, destaque no que importa.</p>
+  </div>
+
+<script>
+  const slider = document.getElementById('sliderControl');
+  const after = document.getElementById('afterLayer');
+  const divider = document.getElementById('divider');
+  const handle = document.getElementById('handle');
+
+  slider.addEventListener('input', () => {
+    const val = slider.value;
+    after.style.clipPath = 'inset(0 ' + (100 - val) + '% 0 0)';
+    divider.style.left = val + '%';
+    handle.style.left = val + '%';
+  });
+
+  const btnSlider = document.getElementById('btnSlider');
+  const btnSide = document.getElementById('btnSide');
+  const compareWrap = document.getElementById('compareWrap');
+
+  btnSlider.addEventListener('click', () => {
+    compareWrap.classList.remove('mode-side');
+    btnSlider.classList.add('active');
+    btnSide.classList.remove('active');
+  });
+  btnSide.addEventListener('click', () => {
+    compareWrap.classList.add('mode-side');
+    btnSide.classList.add('active');
+    btnSlider.classList.remove('active');
+  });
+</script>
+</body>
+</html>
