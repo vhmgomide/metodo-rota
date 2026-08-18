@@ -3,286 +3,503 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Exemplo de case — portfólio RO³TA</title>
+<title>RO³TA — Apresentações Claras, Interessantes e Autorais</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #0f0f0f;
     --panel: #171717;
+    --panel-2: #1c1c1c;
     --gold: #c9a84c;
     --text: #ededed;
-    --muted: #8a8a86;
-    --border: rgba(201,168,76,0.25);
+    --muted: #9a9a96;
+    --border: rgba(201,168,76,0.22);
   }
-  * { box-sizing: border-box; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
   body {
-    margin: 0;
     background: var(--bg);
     color: var(--text);
     font-family: 'Inter', sans-serif;
-    padding: 48px 24px 64px;
+    line-height: 1.6;
   }
-  .wrap { max-width: 760px; margin: 0 auto; }
-  .eyebrow {
-    color: var(--gold);
-    font-size: 12px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    margin: 0 0 12px;
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 80px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 600; }
+  a { color: var(--gold); }
+
+  /* Masthead */
+  .masthead { text-align: center; padding: 64px 0 40px; }
+  .masthead .eyebrow {
+    color: var(--gold); font-size: 13px; letter-spacing: 0.14em;
+    text-transform: uppercase; margin-bottom: 10px; font-style: italic;
   }
-  h1 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 600;
-    font-size: 32px;
-    line-height: 1.25;
-    margin: 0 0 8px;
+  .masthead h1 { font-size: 42px; letter-spacing: 0.02em; }
+
+  /* Bloco 1 - Cenario */
+  .cenario p { font-size: 19px; color: var(--text); margin-bottom: 14px; max-width: 620px; }
+  .cenario p.lead { font-size: 22px; font-family: 'Playfair Display', serif; }
+
+  /* Bloco 2 - Sintomas */
+  .sintomas h3 { font-size: 22px; margin-bottom: 20px; }
+  .sintomas ul { list-style: none; }
+  .sintomas li {
+    padding: 14px 0 14px 28px; border-top: 1px solid rgba(255,255,255,0.08);
+    position: relative; color: var(--text); font-size: 16px;
   }
-  .context {
-    color: var(--muted);
-    font-size: 15px;
-    margin: 0 0 32px;
+  .sintomas li:last-child { border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .sintomas li::before {
+    content: "—"; position: absolute; left: 0; color: var(--gold);
   }
-  .compare-wrap {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    border-radius: 10px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-    background: #000;
+  .sintomas .followup { margin-top: 24px; color: var(--muted); font-size: 16px; }
+
+  /* Bloco 3 - prints pontuais placeholders */
+  .pontuais { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-top: 32px; }
+  .pontual-slot {
+    border: 1px dashed var(--border); border-radius: 8px; padding: 22px 16px;
+    text-align: center; color: var(--muted); font-size: 13px; min-height: 110px;
+    display: flex; align-items: center; justify-content: center;
   }
-  .slide-layer {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+
+  /* Bloco 4 - CIA */
+  .cia p { font-size: 17px; color: var(--text); margin-bottom: 16px; max-width: 620px; }
+  .cia .cia-word { color: var(--gold); }
+
+  /* Secao 2 - Metodo */
+  .metodo-intro { color: var(--muted); font-size: 16px; max-width: 600px; margin-bottom: 40px; }
+  .metodo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .metodo-card {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 26px;
   }
-  .slide-layer .tag {
-    position: absolute;
-    top: 14px;
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+  .metodo-card .letter { color: var(--gold); font-family: 'Playfair Display', serif; font-size: 28px; margin-bottom: 6px; }
+  .metodo-card h4 { font-size: 17px; font-family: 'Inter', sans-serif; font-weight: 600; margin-bottom: 8px; }
+  .metodo-card p { color: var(--muted); font-size: 14.5px; }
+
+  /* Secao 3 - Portfolio */
+  .portfolio-intro { color: var(--muted); font-size: 16px; max-width: 600px; margin-bottom: 36px; }
+  .pf-carousel-wrap { position: relative; }
+  .pf-carousel {
+    display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+    scroll-behavior: smooth; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
-  .slide-before {
-    background: #f4f2ec;
-    padding: 36px 40px;
+  .pf-carousel::-webkit-scrollbar { display: none; }
+  .pf-slide { flex: 0 0 100%; scroll-snap-align: center; display: flex; justify-content: center; padding: 0 2px; }
+  .pf-nav-row { display: flex; justify-content: space-between; align-items: center; margin-top: 18px; }
+  .pf-nav {
+    background: var(--panel); border: 1px solid var(--border); color: var(--gold);
+    width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 18px;
+    flex-shrink: 0; line-height: 1;
   }
-  .slide-before .tag { left: 16px; color: #8a8a86; }
-  .slide-before h2 {
-    font-family: 'Inter', sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    color: #1f3864;
-    margin: 0 0 14px;
-    border-bottom: 2px solid #1f3864;
-    padding-bottom: 8px;
+  .pf-nav:hover { border-color: var(--gold); }
+  .pf-counter { color: var(--muted); font-size: 13px; }
+  .pf-card {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
+    overflow: hidden; display: flex; flex-direction: column; max-width: 480px; width: 100%;
   }
-  .slide-before ul {
-    margin: 0;
-    padding-left: 18px;
-    font-size: 11px;
-    line-height: 1.8;
-    color: #333;
+  .pf-media { width: 100%; aspect-ratio: 16/10; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .pf-media img, .pf-media video { width: 100%; height: 100%; object-fit: contain; }
+  .pf-media.placeholder { color: var(--muted); font-size: 13px; text-align: center; padding: 20px; border-bottom: 1px dashed var(--border); }
+  .pf-body { padding: 16px 18px 20px; }
+  .pf-tag {
+    display: inline-block; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 20px; margin-bottom: 10px;
   }
-  .slide-after {
-    background: #0f0f0f;
-    padding: 40px 48px;
-    clip-path: inset(0 50% 0 0);
+  .pf-tag.cliente { background: rgba(255,255,255,0.08); color: var(--muted); }
+  .pf-tag.pessoal { background: rgba(201,168,76,0.15); color: var(--gold); }
+  .pf-body h4 { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 15.5px; margin-bottom: 6px; }
+  .pf-body p { color: var(--muted); font-size: 13.5px; }
+
+  /* Secao 4 - Servicos */
+  .region-toggle { display: flex; gap: 8px; margin-bottom: 40px; }
+  .region-btn {
+    background: transparent; border: 1px solid var(--border); color: var(--muted);
+    font-family: 'Inter', sans-serif; font-size: 13px; padding: 8px 18px; border-radius: 20px; cursor: pointer;
   }
-  .slide-after .tag { right: 16px; color: var(--gold); }
-  .slide-after .headline {
-    font-family: 'Playfair Display', serif;
-    font-weight: 600;
-    font-size: 22px;
-    line-height: 1.35;
-    color: var(--text);
-    margin: 0 0 20px;
-    max-width: 90%;
+  .region-btn.active { border-color: var(--gold); color: var(--gold); }
+  .servicos-intro { color: var(--muted); font-size: 16px; margin-bottom: 32px; }
+  .servicos-group h3 { font-size: 20px; margin: 36px 0 18px; }
+  .servico-card {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
+    padding: 24px; margin-bottom: 16px;
   }
-  .slide-after .stats {
-    display: flex;
-    gap: 28px;
+  .servico-card .top-row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+  .servico-card h4 { font-size: 18px; }
+  .servico-card .price { color: var(--gold); font-family: 'Playfair Display', serif; font-size: 18px; white-space: nowrap; }
+  .servico-card p { color: var(--muted); font-size: 14.5px; margin-bottom: 8px; }
+  .servico-card .meta { color: var(--muted); font-size: 12.5px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: 10px; }
+
+  /* Secao 5 - CTA */
+  .cta { text-align: center; }
+  .cta ol { list-style: none; margin: 28px 0 36px; text-align: left; max-width: 450px; margin-left: auto; margin-right: auto; }
+  .cta li { padding: 10px 0; color: var(--muted); font-size: 15px; display: flex; gap: 12px; }
+  .cta li .num { color: var(--gold); font-family: 'Playfair Display', serif; }
+  .cta-button {
+    display: inline-block; background: var(--gold); color: #0f0f0f; font-weight: 600;
+    padding: 14px 32px; border-radius: 6px; text-decoration: none; font-size: 15px;
   }
-  .slide-after .stat b {
-    display: block;
-    font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    color: var(--gold);
+
+  /* Footer */
+  footer { padding: 40px 0 60px; text-align: center; }
+  .social-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; }
+  .social-links a { color: var(--muted); font-size: 14px; text-decoration: none; }
+  .social-links a:hover { color: var(--gold); }
+  footer .copy { color: var(--muted); font-size: 12px; }
+
+  @media (max-width: 640px) {
+    .metodo-grid { grid-template-columns: 1fr; }
+    .masthead h1 { font-size: 32px; }
   }
-  .slide-after .stat span {
-    font-size: 11px;
-    color: var(--muted);
-  }
-  .divider {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    width: 2px;
-    background: var(--gold);
-    pointer-events: none;
-  }
-  .handle {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    background: var(--gold);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;
-    font-size: 13px;
-    color: #0f0f0f;
-    font-weight: 700;
-  }
-  input.slider-control {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    opacity: 0;
-    cursor: col-resize;
-    -webkit-appearance: none;
-    appearance: none;
-  }
-  .caption {
-    margin-top: 20px;
-    font-size: 14px;
-    line-height: 1.7;
-    color: var(--muted);
-  }
-  .caption strong { color: var(--text); font-weight: 500; }
-  .mode-toggle {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 16px;
-  }
-  .mode-btn {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--muted);
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    padding: 7px 16px;
-    border-radius: 20px;
-    cursor: pointer;
-  }
-  .mode-btn.active { border-color: var(--gold); color: var(--gold); }
-  .compare-wrap.mode-side {
-    display: flex;
-    align-items: stretch;
-    gap: 12px;
-    aspect-ratio: auto;
-    overflow: visible;
-  }
-  .compare-wrap.mode-side .slide-layer {
-    position: relative;
-    flex: 1 1 50%;
-    aspect-ratio: auto;
-    height: auto;
-    clip-path: none !important;
-    border-radius: 8px;
-    overflow: visible;
-    justify-content: flex-start;
-  }
-  .compare-wrap.mode-side .slide-before { padding: 26px 24px 22px; }
-  .compare-wrap.mode-side .slide-before h2 {
-    font-size: 14px;
-    margin: 6px 0 10px;
-    padding-bottom: 6px;
-  }
-  .compare-wrap.mode-side .slide-before ul { font-size: 10.5px; line-height: 1.65; }
-  .compare-wrap.mode-side .slide-after { padding: 26px 24px 22px; }
-  .compare-wrap.mode-side .slide-after .headline {
-    font-size: 16px;
-    max-width: 100%;
-    margin: 6px 0 16px;
-  }
-  .compare-wrap.mode-side .slide-after .stats { gap: 16px; }
-  .compare-wrap.mode-side .slide-after .stat b { font-size: 16px; }
-  .compare-wrap.mode-side .divider,
-  .compare-wrap.mode-side .handle,
-  .compare-wrap.mode-side .slider-control { display: none; }
 </style>
 </head>
 <body>
+
+<div class="masthead">
+  <p class="eyebrow"><!-- AJUSTE: tagline de 3 palavras na sua voz --> apresentações, clareza e autoria</p>
+  <h1>RO³TA</h1>
+</div>
+
+<!-- SEÇÃO 1 — ABERTURA -->
+<section id="abertura">
   <div class="wrap">
-    <p class="eyebrow">Case reconstruído · RO³TA</p>
-    <h1>Aula pública — concurso de professor titular</h1>
-    <p class="context">Arraste o divisor para comparar o slide original com a reconstrução RO³TA.</p>
 
-    <div class="mode-toggle" role="group" aria-label="Modo de visualização">
-      <button type="button" class="mode-btn active" id="btnSlider">Slider</button>
-      <button type="button" class="mode-btn" id="btnSide">Lado a lado</button>
+    <div class="cenario">
+      <p class="lead">Segunda-feira, 14h30. Falta uma semana pra sua palestra.</p>
+      <p>Você já revisou todo o conteúdo. Está impecável! Com referências, bem embasado. Mas tá chato.</p><br><br> 
+	  <p>Você, que vai apresentar, só quer "acabar logo com isso".</p>
+	  <p>Como será que quem estiver te ouvindo vai receber isso?</p>
     </div>
 
-    <div class="compare-wrap" id="compareWrap">
-      <div class="slide-layer slide-before">
-        <span class="tag">Antes</span>
-        <h2>Trajetória Acadêmica e Linha de Pesquisa</h2>
-        <ul>
-          <li>Graduação em Engenharia pela UF (2008–2012)</li>
-          <li>Mestrado em Engenharia de Sistemas, ênfase em otimização de processos (2013–2015)</li>
-          <li>Doutorado com foco em modelos preditivos aplicados à manufatura (2016–2020)</li>
-          <li>12 artigos publicados em periódicos Qualis A1/A2</li>
-          <li>Participação em 8 projetos de pesquisa financiados por agências de fomento</li>
-          <li>Orientação de 15 trabalhos de conclusão e 4 dissertações de mestrado</li>
-          <li>10 anos de experiência docente em graduação e pós-graduação</li>
-        </ul>
+    <div class="sintomas" style="margin-top:56px;">
+      <h3>Você já viu isso de algum lado da plateia:</h3>
+      <ul>
+        <li>A palestra que se camufla no meio de todas as outras do dia e passa batida</li>
+        <li>Slide cheio de bullet point atrás de bullet point, ninguém lendo, todo mundo só esperando acabar</li>
+        <li>Aquele template genérico do PowerPoint que dá pra reconhecer de longe</li>
+        <li>A apresentação que dá pra ver de cara que foi feita por IA — marca d'água ainda no canto, o losango do Gemini, o jeito "gerado" que ninguém escondeu</li>
+      </ul>
+      <p class="followup">Se algum desses te deu um aperto, o problema não é você. É que ninguém te ensinou a diferença entre ter conteúdo bom e apresentar ele bem.</p>
+
+      <div class="pontuais">
+        <div class="pontual-slot">print pontual —<br>"passa batido"</div>
+        <div class="pontual-slot">print pontual —<br>excesso de bullet</div>
+        <div class="pontual-slot">print pontual —<br>template genérico</div>
+        <div class="pontual-slot">print pontual —<br>cara de feito por IA</div>
       </div>
-      <div class="slide-layer slide-after" id="afterLayer">
-        <span class="tag">Depois</span>
-        <p class="headline">Uma década conectando pesquisa e prática: de modelos preditivos a decisões reais de manufatura.</p>
-        <div class="stats">
-          <div class="stat"><b>12</b><span>artigos</span></div>
-          <div class="stat"><b>8</b><span>projetos</span></div>
-          <div class="stat"><b>19</b><span>orientações</span></div>
-        </div>
-      </div>
-      <div class="divider" id="divider"></div>
-      <div class="handle" id="handle">↔</div>
-      <input type="range" class="slider-control" min="0" max="100" value="50" id="sliderControl" aria-label="Comparar antes e depois">
     </div>
 
-    <p class="caption"><strong>O porquê:</strong> o antes tenta provar tudo de uma vez, sete linhas competindo pela mesma atenção. O depois escolhe uma única ideia e deixa os números como prova, não como protagonista — informação aos poucos, destaque no que importa.</p>
+    <div class="cia" style="margin-top:64px;">
+      <p>A maioria das apresentações não fracassa por falta de informação. Fracassa porque tenta mostrar informação demais, tudo do mesmo tamanho, tudo com a mesma importância.</p>
+      <p>Eu não crio apresentações bonitas. Ajudo a encontrar a clareza que já existe no meio da bagunça — e a contar isso de um jeito que também tenha graça, não só estrutura.</p>
+      <p>Isso é o que eu chamo de apresentação <span class="cia-word">CIA</span>: <strong>Clara</strong>, <strong>Interessante</strong>, <strong>Autoral</strong>. Clara porque tem uma ideia central, não vinte. Interessante porque não soa igual a todas as outras. Autoral porque é sua, na sua voz — não um template genérico com seu nome em cima.</p>
+    </div>
+
   </div>
+</section>
+
+<!-- SEÇÃO 2 — MÉTODO RO³TA -->
+<section id="metodo">
+  <div class="wrap">
+    <h2 style="font-size:30px; margin-bottom:14px;">O método RO³TA</h2>
+    <p class="metodo-intro">RO³TA é o processo que sustenta toda apresentação CIA que eu entrego ou ajudo a construir. Não é fórmula mágica — é uma sequência de perguntas, sempre nessa ordem, antes de qualquer slide ser aberto.</p>
+    <div class="metodo-grid">
+      <div class="metodo-card">
+        <div class="letter">R</div>
+        <h4>Repertório</h4>
+        <p>O que você já sabe, já viveu, já domina sobre o assunto — e sobre quem vai te ouvir. Toda apresentação boa começa aqui, não na primeira lâmina do PowerPoint.</p>
+      </div>
+      <div class="metodo-card">
+        <div class="letter">O³</div>
+        <h4>Origem, Objeções, Objetivo</h4>
+        <p>De onde vem essa mensagem, que dúvidas ou resistências a plateia já carrega antes de você abrir a boca, e o que precisa ficar na cabeça dela quando você terminar.</p>
+      </div>
+      <div class="metodo-card">
+        <div class="letter">T</div>
+        <h4>Trilha</h4>
+        <p>O caminho que a apresentação percorre para sair do início e chegar nesse objetivo — a estrutura, o roteiro, a ordem das ideias.</p>
+      </div>
+      <div class="metodo-card">
+        <div class="letter">A</div>
+        <h4>Apresentação</h4>
+        <p>A entrega final. O que a plateia realmente vê — os slides prontos para serem Claros, Interessantes e Autorais.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEÇÃO 3 — PORTFÓLIO -->
+<section id="portfolio">
+  <div class="wrap">
+    <h2 style="font-size:30px; margin-bottom:14px;">Portfólio</h2>
+    <p class="portfolio-intro">Cada projeto abaixo é real. Os de cliente têm identificação removida por confidencialidade — os pessoais, não, porque não têm essa restrição, então mostram mais risco e mais experimentação.</p>
+
+    <div class="pf-carousel-wrap">
+      <div class="pf-carousel" id="pfCarousel">
+
+        <div class="pf-slide">
+          <div class="pf-card">
+            <div class="pf-media">
+				<video loop muted playsinline>
+					<source src="assets/odonto-mestrado-apresentacao-artigo.mp4" type="video/mp4">
+				</video>
+			</div>
+            <div class="pf-body">
+              <span class="pf-tag cliente">Cliente</span>
+              <h4>Apresentação de um artigo - Mestrado de Odontologia</h4>
+              <p>Reestruturação de capa e slide de resultados, saindo do texto corrido pra hierarquia visual com destaque no dado que decide.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pf-slide">
+          <div class="pf-card">
+            <div class="pf-media">
+				<video loop muted playsinline>
+					<source src="assets/dashboard-piada.mp4" type="video/mp4">
+				</video>
+			</div>
+            <div class="pf-body">
+              <span class="pf-tag pessoal">Pessoal</span>
+              <h4>Dashboard é tipo uma piada</h4>
+              <p>Boas práticas de visualização de dados em Power BI, sem perder a graça. Dado técnico com uma pitada de Star Wars.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pf-slide">
+          <div class="pf-card">
+            <div class="pf-media">
+				<video loop muted playsinline>
+					<source src="assets/nem-8-nem-80.mp4" type="video/mp4">
+				</video>
+			</div>
+            <div class="pf-body">
+              <span class="pf-tag pessoal">Pessoal</span>
+              <h4>Extremos Pendulares</h4>
+              <p>Inspirado em algo que meu avô dizia "Nem 8, nem 80. 40". Um conceito sobre moderação, construído visualmente com o próprio contraste preto e branco da tela.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pf-slide">
+          <div class="pf-card">
+            <div class="pf-media">
+				<video loop muted playsinline>
+					<source src="assets/vieses-danca-nao-coisa-de-homem.mp4" type="video/mp4">
+				</video>
+			</div>
+            <div class="pf-body">
+              <span class="pf-tag pessoal">Pessoal</span>
+              <h4>Dança e Vieses</h4>
+              <p>Dois universos que normalmente não se misturam... O tipo de conexão que só sai de um repertório próprio.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pf-slide">
+          <div class="pf-card">
+            <div class="pf-media">
+				<video loop muted playsinline>
+					<source src="assets/esquema-visual-dikw.mp4" type="video/mp4">
+				</video>
+			</div>
+            <div class="pf-body">
+              <span class="pf-tag pessoal">Pessoal</span>
+              <h4>Do dado à sabedoria</h4>
+              <p>A escada clássica de BI (Dado, Informação, Conhecimento, Sabedoria), redesenhada pra quem nunca ouviu falar de DIKW entender de cara.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pf-slide">
+          <div class="pf-card">
+            <div class="pf-media">
+				<video loop muted playsinline>
+					<source src="assets/esquema-visual-matriz.mp4" type="video/mp4">
+				</video>
+			</div>
+            <div class="pf-body">
+              <span class="pf-tag pessoal">Pessoal</span>
+              <h4>Matriz com formas de Apresentar dados</h4>
+              <p>Mostrando os diferentes tipos de apresentar dados e classificando-os em uma matriz Visual x Quantidade de Informação.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pf-slide">
+          <div class="pf-card">
+            <div class="pf-media">
+				<video loop muted playsinline>
+					<source src="assets/excalidraw.mp4" type="video/mp4">
+				</video>
+			</div>
+            <div class="pf-body">
+              <span class="pf-tag pessoal">Pessoal</span>
+              <h4>Rascunho vira estrutura</h4>
+              <p>Do quadro solto no Excalidraw até a ideia ganhar forma — o processo de pensar aparecendo, não só o resultado final.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pf-slide">
+          <div class="pf-card">
+            <div class="pf-media">
+				<video loop muted playsinline>
+					<source src="assets/cronos-kairos.mp4" type="video/mp4">
+				</video>
+			</div>
+            <div class="pf-body">
+              <span class="pf-tag pessoal">Pessoal</span>
+              <h4>Cronos x Kairós</h4>
+              <p>A mesma informação, três formas diferentes de apresentar — o antes, o meio e o depois acontecendo dentro do próprio GIF.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pf-slide">
+          <div class="pf-card">
+            <div class="pf-media">
+				<video loop muted playsinline>
+					<source src="assets/lebron.mp4" type="video/mp4">
+				</video>
+            </div>
+            <div class="pf-body">
+              <span class="pf-tag pessoal">Pessoal</span>
+              <h4>40 mil pontos, uma história</h4>
+              <p>Um marco estatístico do esporte virando narrativa, não só número solto num gráfico.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pf-nav-row">
+        <button class="pf-nav" onclick="pfScroll(-1)" aria-label="Anterior">‹</button>
+        <span class="pf-counter" id="pfCounter">1 / 9</span>
+        <button class="pf-nav" onclick="pfScroll(1)" aria-label="Próximo">›</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEÇÃO 4 — SERVIÇOS -->
+<section id="servicos">
+  <div class="wrap">
+    <h2 style="font-size:30px; margin-bottom:20px;">Serviços</h2>
+
+    <div class="region-toggle" role="group" aria-label="Escolha sua região">
+      <button type="button" class="region-btn active" id="btnBR" onclick="setRegion('BR')">🇧🇷 Brasil</button>
+      <button type="button" class="region-btn" id="btnPT" onclick="setRegion('PT')">🇵🇹 Portugal / Europa</button>
+    </div>
+
+    <p class="servicos-intro">Dois caminhos, dependendo de onde você está agora.</p>
+
+    <div class="servicos-group">
+      <h3>Você já tem uma apresentação pronta?</h3>
+
+      <div class="servico-card">
+        <div class="top-row">
+          <h4>Diagnóstico RO³TA</h4>
+          <span class="price" data-br="R$300" data-pt="€60">R$300</span>
+        </div>
+        <p>Você só quer saber onde ela trava, sem refazer nada ainda. Eu assisto, aplico a lente RO³TA e devolvo o que funciona, o que atrapalha, e o que mudar primeiro.</p>
+        <div class="meta">Reunião (com possibilidade de gravação) · Entregável em relatório ou vídeo comentando slide a slide · Se decidir contratar o Redesenho em até 30 dias, o valor é abatido integralmente.</div>
+      </div>
+
+      <div class="servico-card">
+        <div class="top-row">
+          <h4>Redesenho de Apresentação</h4>
+          <span class="price" data-br="a partir de R$800" data-pt="a partir de €180">a partir de R$800</span>
+        </div>
+        <p>Os slides já existem, falta a virada visual. Eu dou a clareza sem descartar o que já funciona.</p>
+        <div class="meta">Reuniões de contexto · Entregas em sprints, não só no final · Valor final definido após eu avaliar rapidamente o material (sem compromisso).</div>
+      </div>
+    </div>
+
+    <div class="servicos-group">
+      <h3>Ainda não tem uma apresentação?</h3>
+
+      <div class="servico-card">
+        <div class="top-row">
+          <h4>Copiloto RO³TA <span style="color:var(--muted); font-size:13px; font-family:'Inter',sans-serif;">(mentoria)</span></h4>
+          <span class="price">Sob consulta</span>
+        </div>
+        <p>Você constrói a apresentação, eu seguro sua mão nos pontos certos do caminho. RO³TA Completo resolve essa apresentação. Copiloto te ensina a resolver todas as próximas.</p>
+        <div class="meta">Reuniões de acompanhamento · Construção do roteiro junto com você</div>
+      </div>
+
+      <div class="servico-card">
+        <div class="top-row">
+          <h4>RO³TA Completo</h4>
+          <span class="price">Sob consulta</span>
+        </div>
+        <p>Arquitetura e slides do zero, feitos por mim. Você valida, eu executo, com limite claro de rodadas de ajuste.</p>
+        <div class="meta">Reuniões de descoberta · Entrega da apresentação pronta</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEÇÃO 5 — CTA -->
+<section id="contato" style="border-bottom:none;">
+  <div class="wrap cta">
+    <h2 style="font-size:28px;">Como funciona</h2>
+    <ol>
+      <li><span class="num">1</span> Preencha o formulário contando o que você precisa</li>
+      <li><span class="num">2</span> Conversamos rapidamente por Google Meet</li>
+      <li><span class="num">3</span> Combinamos escopo e valor antes de começar</li>
+    </ol>
+    <a href="#" class="cta-button"><!-- AJUSTE: link do Google Forms -->Solicitar um projeto →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="social-links">
+    <a href="https://www.linkedin.com/in/victor-gomide/">LinkedIn</a>
+    <a href="http://metodorota.substack.com/">Substack</a>
+  </div>
+  <p class="copy">© 2026 RO³TA — Victor Gomide</p>
+</footer>
 
 <script>
-  const slider = document.getElementById('sliderControl');
-  const after = document.getElementById('afterLayer');
-  const divider = document.getElementById('divider');
-  const handle = document.getElementById('handle');
+  function setRegion(region) {
+    document.getElementById('btnBR').classList.toggle('active', region === 'BR');
+    document.getElementById('btnPT').classList.toggle('active', region === 'PT');
+    document.querySelectorAll('.price[data-br]').forEach(el => {
+      el.textContent = region === 'BR' ? el.dataset.br : el.dataset.pt;
+    });
+  }
 
-  slider.addEventListener('input', () => {
-    const val = slider.value;
-    after.style.clipPath = 'inset(0 ' + (100 - val) + '% 0 0)';
-    divider.style.left = val + '%';
-    handle.style.left = val + '%';
-  });
+  // Carrossel do portfólio
+  const pfCarousel = document.getElementById('pfCarousel');
+  const pfSlides = document.querySelectorAll('.pf-slide');
+  const pfCounter = document.getElementById('pfCounter');
+  pfCounter.textContent = '1 / ' + pfSlides.length;
 
-  const btnSlider = document.getElementById('btnSlider');
-  const btnSide = document.getElementById('btnSide');
-  const compareWrap = document.getElementById('compareWrap');
+  function pfScroll(dir) {
+    pfCarousel.scrollBy({ left: dir * pfCarousel.clientWidth, behavior: 'smooth' });
+  }
 
-  btnSlider.addEventListener('click', () => {
-    compareWrap.classList.remove('mode-side');
-    btnSlider.classList.add('active');
-    btnSide.classList.remove('active');
-  });
-  btnSide.addEventListener('click', () => {
-    compareWrap.classList.add('mode-side');
-    btnSide.classList.add('active');
-    btnSlider.classList.remove('active');
-  });
+  // Só toca o vídeo do slide visível; pausa os demais (evita vários vídeos rodando ao mesmo tempo)
+  const pfObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const video = entry.target.querySelector('video');
+      const visible = entry.isIntersecting && entry.intersectionRatio > 0.6;
+      if (video) {
+        if (visible) { video.play().catch(() => {}); }
+        else { video.pause(); }
+      }
+      if (visible) {
+        const idx = Array.from(pfSlides).indexOf(entry.target);
+        pfCounter.textContent = (idx + 1) + ' / ' + pfSlides.length;
+      }
+    });
+  }, { root: pfCarousel, threshold: [0, 0.6, 1] });
+
+  pfSlides.forEach(slide => pfObserver.observe(slide));
 </script>
+
 </body>
 </html>
