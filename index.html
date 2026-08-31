@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RO³TA — Apresentações Claras, Interessantes e Autorais</title>
+<title>RO³TA — Apresentações claras, interessantes e autorais</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -43,18 +43,21 @@
   }
 
   /* Masthead */
-  .masthead { text-align: left; padding: 72px 0 44px; max-width: 860px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+  .masthead { text-align: left; padding: 72px 0 12px; max-width: 860px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
   .masthead .eyebrow {
     color: var(--gold); font-size: 13px; letter-spacing: 0.14em;
     text-transform: uppercase; margin-bottom: 14px; font-style: italic;
   }
   .wordmark { display: inline-flex; align-items: flex-start; font-family: 'Playfair Display', serif; line-height: 0.82; }
+  .wordmark-img { height: 72px; width: auto; display: block; }
   .wordmark .wm-ro, .wordmark .wm-ta { font-size: 56px; font-weight: 600; color: var(--text); }
   .wordmark .wm-3 {
     font-size: 30px; font-weight: 700; color: var(--bg); background: var(--gold);
     width: 40px; height: 40px; border-radius: 50%; display: inline-flex;
     align-items: center; justify-content: center; margin: -6px 2px 0; flex-shrink: 0;
   }
+
+  #abertura { padding-top: 24px; }
 
   /* Bloco 1 - Cenario */
   .cenario p { font-size: 19px; color: var(--text); margin-bottom: 14px; max-width: 620px; }
@@ -72,6 +75,9 @@
     content: "—"; position: absolute; left: 0; color: var(--gold);
   }
   .sintomas .followup { margin-top: 24px; color: var(--muted); font-size: 16px; }
+  .ruins-list { display: flex; flex-direction: column; gap: 40px; margin-top: 32px; }
+  .ruins-item h4 { font-family: 'Instrument Sans', sans-serif; font-weight: 600; font-size: 17px; margin-bottom: 8px; }
+  .ruins-item p { color: var(--muted); font-size: 14.5px; margin-bottom: 14px; max-width: 620px; }
 
   /* Bloco 3 - prints pontuais placeholders */
   .pontuais { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-top: 32px; }
@@ -99,13 +105,13 @@
     display: flex; align-items: center; justify-content: center; margin-bottom: 22px;
     position: relative; z-index: 2; overflow: hidden;
   }
-  .trilha-node img { width: 30px; height: 30px; object-fit: contain; transition: opacity 0.25s ease; }
+  .trilha-node img { width: 30px; height: 30px; object-fit: contain; opacity: 0; transition: opacity 0.25s ease; }
   .trilha-node .trilha-letter {
-    position: absolute; opacity: 0; transition: opacity 0.25s ease;
+    position: absolute; opacity: 1; transition: opacity 0.25s ease;
     font-family: 'Playfair Display', serif; font-size: 22px; color: var(--gold);
   }
-  .trilha-node:hover img { opacity: 0; }
-  .trilha-node:hover .trilha-letter { opacity: 1; }
+  .trilha-node:hover img { opacity: 1; }
+  .trilha-node:hover .trilha-letter { opacity: 0; }
   .trilha-stop h4 { font-family: 'Instrument Sans', sans-serif; font-weight: 600; font-size: 16px; margin-bottom: 8px; }
   .trilha-stop p { color: var(--muted); font-size: 13.5px; }
 
@@ -124,6 +130,7 @@
   }
   .pf-filter-btn.active { border-color: var(--gold); color: var(--gold); }
   .pf-carousel-wrap { position: relative; }
+  .pf-list { display: flex; flex-direction: column; gap: 40px; }
   .pf-carousel {
     display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
     scroll-behavior: smooth; -webkit-overflow-scrolling: touch;
@@ -213,150 +220,56 @@
 <body>
 
 <div class="masthead">
-  <p class="eyebrow"><!-- AJUSTE: tagline de 3 palavras na sua voz --> apresentações, clareza e autoria</p>
-  <div class="wordmark"><span class="wm-ro">RO</span><span class="wm-3">3</span><span class="wm-ta">TA</span></div>
+  <p class="eyebrow"><!-- AJUSTE: tagline de 3 palavras na sua voz --> Apresentações claras, interessantes e autorais</p>
+  <div class="wordmark"><img src="assets/logo_Rota.png" alt="RO³TA" class="wordmark-img"></div>
 </div>
 
 <!-- SEÇÃO 1 — ABERTURA -->
 <section id="abertura">
   <div class="wrap">
 
-    <div class="cenario">
-      <p class="lead">Segunda-feira, 14h30. Falta uma semana pra sua palestra.</p>
-      <p>Você já revisou todo o conteúdo. Está impecável! Com referências, bem embasado. Mas tá chato.</p><br> 
-	  <p>Você, que vai apresentar, só quer <span class="hl">"acabar logo com isso"</span>.</p>
-	  <p>Imagina quem vai ouvir?</p>
-    </div>
+    <div class="sintomas">
+      <h3>Você já viu algumas apresentações (maioria, arrisco dizer) que poderiam ser e-mails... ou <span class="hl"> assistidas no 2x enquanto tá na esteira</span>.</h3>
+      <p class="followup" style="margin-top:14px;"> Abaixo alguns slides que são mais comuns do que eu gostaria... O ponto é que <span class="hl"> existe uma grande diferença entre ter conteúdo bom e apresentá-lo bem.</span><br><br></p>
 
-    <div class="sintomas" style="margin-top:56px;">
-      <h3>Agora o outro lado... Você já foi plateia também. E já viu algumas apresentações (maioria, arrisco dizer) que poderiam ser um e-mail... ou <span class="hl"> assistidas no 2x enquanto lava a louça</span>.</h3>
-      <p class="followup" style="margin-top:14px;"> Abaixo alguns slides que são mais comuns do que eu gostaria... Se algum desses te deu um aperto, um incômodo o problema não é você. O ponto é que <span class="hl"> existe uma grande diferença entre ter conteúdo bom e apresentar ele bem.</span><br><br></p>
+      <div class="ruins-list">
 
-      <div class="pf-filters" id="sintFilters">
-        <button class="pf-filter-btn active" data-filter="todos">Todos</button>
-        <button class="pf-filter-btn" data-filter="bullets">Bullets e muita informação</button>
-        <button class="pf-filter-btn" data-filter="madewithai">Feito com IA</button>
-        <button class="pf-filter-btn" data-filter="obrigado">Slide de Obrigado</button>
-        <button class="pf-filter-btn" data-filter="generica">Imagem genérica</button>
-      </div>
-
-      <div class="pf-carousel-wrap" style="margin-top:20px;">
-        <div class="pf-carousel" id="sintCarousel">
-          <div class="pf-slide" data-category="bullets">
-            <div class="pf-card">
-              <div class="pontual-slot"><img src="assets/bullets_01.png" alt="Slide cheio de bullet point e provavelmente foi lido durante a apresentação."></div>
-              <div class="pf-body"><p>Slide cheio de bullet point e provavelmente foi lido durante a apresentação.</p></div>
-            </div>
-          </div>
-          <div class="pf-slide" data-category="bullets">
-            <div class="pf-card">
-              <div class="pontual-slot"><img src="assets/muitaInfo_01.png" alt="Slide que com muito texto e um template padrão do PowerPoint."></div>
-              <div class="pf-body"><p>Slide que com muito texto e um template padrão do PowerPoint.</p></div>
-            </div>
-          </div>
-          <div class="pf-slide" data-category="bullets">
-            <div class="pf-card">
-              <div class="pontual-slot"><img src="assets/muitaInfo_02.png" alt="Imagem genérica, muitas cores no fundo e texto sem fim."></div>
-              <div class="pf-body"><p>Imagem genérica, muitas cores no fundo e texto sem fim.</p></div>
-            </div>
-          </div>
-          <div class="pf-slide" data-category="bullets">
-            <div class="pf-card">
-              <div class="pontual-slot"><img src="assets/muitaInfo_03.png" alt="Outro exemplo de slide que com muito texto e um template padrão do PowerPoint."></div>
-              <div class="pf-body"><p>Outro exemplo de slide que com muito texto e um template padrão do PowerPoint.</p></div>
-            </div>
-          </div>
-          <div class="pf-slide" data-category="bullets">
-            <div class="pf-card">
-              <div class="pontual-slot"><img src="assets/muitaInfo_04.png" alt="Aqui não sei pra onde olhar. Texto, diagrama, gráfico. Tudo num slide só."></div>
-              <div class="pf-body"><p>Aqui não sei pra onde olhar. Texto, diagrama, gráfico. Tudo num slide só.</p></div>
-            </div>
-          </div>
-          <div class="pf-slide" data-category="bullets">
-            <div class="pf-card">
-              <div class="pontual-slot"><img src="assets/tabelaInteiraNoSlide.png" alt="Tabela retirado do excel e colocada na íntegra no PowerPoint. Informação demais, difícil de ler e ainda mais de entender."></div>
-              <div class="pf-body"><p>Tabela retirado do excel e colocada na íntegra no PowerPoint. Informação demais, difícil de ler e ainda mais de entender.</p></div>
-            </div>
-          </div>
-          <div class="pf-slide" data-category="madewithai">
-            <div class="pf-card">
-              <div class="pontual-slot"><img src="assets/madeWithAI_01.png" alt="A apresentação que dá pra ver que foi feita por IA. A marca d'água ainda no canto..."></div>
-              <div class="pf-body"><p>A apresentação que dá pra ver que foi feita por IA. A marca d'água ainda no canto...</p></div>
-            </div>
-          </div>
-          <div class="pf-slide" data-category="madewithai">
-            <div class="pf-card">
-              <div class="pontual-slot"><img src="assets/madeWithAI_02.png" alt="A apresentação que dá pra ver que foi feita por IA. A marca d'água ainda no canto... E ainda com uma imagem genérica"></div>
-              <div class="pf-body"><p>A apresentação que dá pra ver que foi feita por IA. A marca d'água ainda no canto... E ainda com uma imagem genérica. </p></div>
-            </div>
-          </div>
-          <div class="pf-slide" data-category="madewithai">
-            <div class="pf-card">
-              <div class="pontual-slot"><img src="assets/madeWithAI_03.png" alt="A apresentação que dá pra ver que foi feita por IA. Outra ferramenta... Mas a marca ainda está no canto..."></div>
-              <div class="pf-body"><p>A apresentação que dá pra ver que foi feita por IA. Outra ferramenta... Mas a marca ainda está no canto...</p></div>
-            </div>
-          </div>
-          <div class="pf-slide" data-category="madewithai">
-            <div class="pf-card">
-              <div class="pontual-slot"><img src="assets/madeWithAI_04.png" alt="Dessa vez sem marca no canto, mas o padrão está lá. Diagramação padrão, ícones, tem o padrão do Gamma ou Canva "></div>
-              <div class="pf-body"><p>Dessa vez sem marca no canto, mas o padrão está lá. Diagramação padrão, ícones, tem o padrão do Gamma ou Canva.</p></div>
-            </div>
-          </div>
-          <div class="pf-slide" data-category="madewithai">
-            <div class="pf-card">
-              <div class="pontual-slot"><img src="assets/madeWithAI_05.png" alt="Ícones, fonte... Dessa vez eu imagino que foi gerada pelo Gemini/Claude (tem cara dos sites gerados por elas)."></div>
-              <div class="pf-body"><p>Ícones, fonte... Dessa vez eu imagino que foi gerada pelo Gemini/Claude (tem cara dos sites gerados por elas).</p></div>
-            </div>
-          </div>
-          <div class="pf-slide" data-category="obrigado">
-            <div class="pf-card">
-              <div class="pontual-slot"><img src="assets/slideObrigado_01.png" alt="Aquele slide final escrito só "Obrigado"... Será mesmo que não tem outra forma de finalizar uma apresentação?"></div>
-              <div class="pf-body"><p>Aquele slide final escrito só "Obrigado"... Será mesmo que não tem outra forma de finalizar uma apresentação?</p></div>
-            </div>
-          </div>
-          <div class="pf-slide" data-category="obrigado">
-            <div class="pf-card">
-              <div class="pontual-slot"><img src="assets/slideObrigado_02.png" alt="Pra piorar... tem templates/modelos de apresentação com slide de obrigado..."></div>
-              <div class="pf-body"><p>Pra piorar... tem templates/modelos de apresentação com slide de obrigado...</p></div>
-            </div>
-          </div>
-          <div class="pf-slide" data-category="generica">
-            <div class="pf-card">
-              <div class="pontual-slot"><img src="assets/imagemGenerica_01.png" alt="O bonequinho, a imagem genérica do banco de imagens tudo isso em um template padrão do PowerPoint (na versão 4:3)."></div>
-              <div class="pf-body"><p>O bonequinho, a imagem genérica do banco de imagens tudo isso em um template padrão do PowerPoint (na versão 4:3).</p></div>
-            </div>
-          </div>
-          <div class="pf-slide" data-category="generica">
-            <div class="pf-card">
-              <div class="pontual-slot"><img src="assets/imagemGenerica_02.png" alt="Qual a melhor imagem pra representar trabalho em equipe? Mãos juntas e unidas... Essa é a primeira idea, a resposta padrão... Por isso é tão comum."></div>
-              <div class="pf-body"><p>Qual a melhor imagem pra representar trabalho em equipe? Mãos juntas e unidas... Essa é a primeira idea, a resposta padrão... Por isso é tão comum.</p></div>
-            </div>
-          </div>
-          <div class="pf-slide" data-category="generica">
-            <div class="pf-card">
-              <div class="pontual-slot"><img src="assets/bonequinhoBranco.png" alt="Olha os bonequinhos novamente. E pra piorar, proporção alterada e a imagem parece "esticada"."></div>
-              <div class="pf-body"><p>Olha os bonequinhos novamente. E pra piorar, proporção alterada e a imagem parece "esticada".</p></div>
-            </div>
-          </div>
-          <div class="pf-slide" data-category="generica">
-            <div class="pf-card">
-              <div class="pontual-slot"><img src="assets/bonequinhoBranco_02.png" alt="Bonequinhos novamente..."></div>
-              <div class="pf-body"><p>Bonequinhos novamente...</p></div>
-            </div>
+        <div class="ruins-item">
+          <h4>Muita informação / Bullet points</h4>
+          <p>Slide cheio de bullet point e provavelmente foi lido durante a apresentação. Ou ainda texto, diagrama, gráfico. Tudo num slide só. Aqui ficamos perdidos, sem saber muito bem para onde olhar</p>
+          <div class="pf-media">
+            <video loop muted playsinline autoplay>
+              <source src="assets/ruins_MuitaInfo_BulletPoints.mp4" type="video/mp4">
+            </video>
           </div>
         </div>
-        <div class="pf-nav-row">
-          <button class="pf-nav" onclick="sintScroll(-1)" aria-label="Anterior">‹</button>
-          <span class="pf-counter" id="sintCounter">1 / 17</span>
-          <button class="pf-nav" onclick="sintScroll(1)" aria-label="Próximo">›</button>
+
+        <div class="ruins-item">
+          <h4>Imagens com qualidade ruim ou genéricas</h4>
+          <p>Os bonequinhos brancos, a imagem esticada, imagem genérica do banco de imagens, um template padrão do PowerPoint (na versão 4:3)</p>
+          <div class="pf-media">
+            <video loop muted playsinline autoplay>
+              <source src="assets/ruins_ImagensRuinsOuGenericas.mp4" type="video/mp4">
+            </video>
+          </div>
         </div>
+
+        <div class="ruins-item">
+          <h4>Slides com "Cara de IA"</h4>
+          <p>Ícones, fonte, alinhamento... Tudo naquele padrão Claude ou ainda a marca no canto inferior direito (Made with Gamma). Nada contra utilizar IA durante o processo de criação de slides. Mas delegar 100% para uma ferramenta?</p>
+          <div class="pf-media">
+            <video loop muted playsinline autoplay>
+              <source src="assets/ruins_CaraDeIA.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+
       </div>
     </div>
 
     <div class="cia" style="margin-top:64px;">
-      <p>A maioria das apresentações não fracassa por falta de informação. Fracassa porque tenta mostrar informação demais, tudo do mesmo tamanho, tudo com a mesma importância.</p>
-      <p>Eu não crio apresentações bonitas. Ajudo a encontrar a clareza que já existe no meio da bagunça — e a contar isso de um jeito que também tenha graça, não só estrutura.</p>
-      <p>Isso é o que eu chamo de apresentação <span class="cia-word">CIA</span>: <span class="hl">Clara</span>, <span class="hl">Interessante</span>, <span class="hl">Autoral</span>. Clara porque tem uma ideia central, não vinte. Interessante porque não soa igual a todas as outras. Autoral porque é sua, na sua voz — não um template genérico com seu nome em cima.</p>
+      <p>Eu não crio apresentações bonitas. Ajudo a encontrar <span class="hl">clareza que já existe em meio ao caos</span> e a contar isso de um jeito interessante e que tenha a sua cara.</p>
+      <p>Isso é o que eu chamo de apresentação <span class="cia-word">CIA</span>: <span class="hl">Clara</span>, <span class="hl">Interessante</span>, <span class="hl">Autoral</span>. Clara, porque tem uma ideia central. Interessante, porque não se mostra igual a todas as outras. Autoral, porque é sua, não um template genérico com seu nome em cima.</p>
     </div>
 
   </div>
@@ -365,30 +278,30 @@
 <!-- SEÇÃO 2 — MÉTODO RO³TA -->
 <section id="metodo">
   <div class="wrap">
-    <h2 style="font-size:30px; margin-bottom:14px;">O método RO³TA</h2>
-    <p class="metodo-intro">RO³TA é o processo que sustenta toda apresentação CIA que eu entrego ou ajudo a construir. Não é fórmula mágica — é uma sequência de perguntas, sempre nessa ordem, antes de qualquer slide ser aberto.</p>
+    <h2 style="font-size:30px; margin-bottom:14px;">O método ROTA</h2>
+    <p class="metodo-intro">RO³TA não é uma fórmula mágica, é um método que eu executo quando construo uma apresentação CIA.</p>
     <div class="trilha">
       <div class="trilha-line"></div>
       <div class="trilha-stops">
         <div class="trilha-stop">
           <div class="trilha-node"><img src="assets/icon-repertorio.png" alt="Ícone de Repertório"><span class="trilha-letter">R</span></div>
           <h4>Repertório</h4>
-          <p>O que você já sabe, já viveu, já domina sobre o assunto — e sobre quem vai te ouvir. Toda apresentação boa começa aqui, não na primeira lâmina do PowerPoint.</p>
+          <p>Como diz Murilo Gun "Tudo que você faz, contém tu". Suas referências, suas histórias, seus conhecimentos, seus hobbies. Uma apresentação boa começa aqui, não no primeiro slide do PowerPoint.</p>
         </div>
         <div class="trilha-stop">
           <div class="trilha-node"><img src="assets/icon-origem-objecoes-objetivo.png" alt="Ícone de Origem, Objeções, Objetivo"><span class="trilha-letter">O³</span></div>
           <h4>Origem, Objeções, Objetivo</h4>
-          <p>De onde vem essa mensagem, que dúvidas ou resistências a plateia já carrega antes de você abrir a boca, e o que precisa ficar na cabeça dela quando você terminar.</p>
+          <p>Uma apresentação precisa ter UMA ideia. O objetivo, nesse momento, é entender sobre o público, mapear dúvidas ou resistências que existem antes mesmo de você abrir a boca, e definir o que precisa ficar na cabeça dele quando você terminar.</p>
         </div>
         <div class="trilha-stop">
           <div class="trilha-node"><img src="assets/icon-trilha.png" alt="Ícone de Trilha"><span class="trilha-letter">T</span></div>
           <h4>Trilha</h4>
-          <p>O caminho que a apresentação percorre para sair do início e chegar nesse objetivo — a estrutura, o roteiro, a ordem das ideias.</p>
+          <p>O caminho que a apresentação percorre para sair da origem e chegar no objetivo. A estrutura, o roteiro, a ordem das ideias.</p>
         </div>
         <div class="trilha-stop">
           <div class="trilha-node"><img src="assets/icon-apresentacao.png" alt="Ícone de Apresentação"><span class="trilha-letter">A</span></div>
           <h4>Apresentação</h4>
-          <p>A entrega final. O que a plateia realmente vê — os slides prontos para serem Claros, Interessantes e Autorais.</p>
+          <p>A entrega final. Os slides que a plateia realmente verá de forma clara, interessante e autoral</p>
         </div>
       </div>
     </div>
@@ -399,21 +312,12 @@
 <section id="portfolio">
   <div class="wrap">
     <h2 style="font-size:30px; margin-bottom:14px;">Portfólio</h2>
-    <p class="portfolio-intro">Cada projeto abaixo é real. Os de cliente têm identificação removida por confidencialidade — os pessoais, não, porque não têm essa restrição, então mostram mais risco e mais experimentação.</p>
 
-    <div class="pf-filters" id="pfFilters">
-      <button class="pf-filter-btn active" data-filter="todos">Todos</button>
-      <button class="pf-filter-btn" data-filter="cliente">Cliente</button>
-      <button class="pf-filter-btn" data-filter="pessoal">Pessoal</button>
-    </div>
+    <div class="pf-list">
 
-    <div class="pf-carousel-wrap">
-      <div class="pf-carousel" id="pfCarousel">
-
-        <div class="pf-slide" data-category="cliente">
-          <div class="pf-card">
+      <div class="pf-card">
             <div class="pf-media">
-				<video loop muted playsinline>
+				<video loop muted playsinline autoplay>
 					<source src="assets/palestra-historico-mais-rapido.mp4" type="video/mp4">
 				</video>
 			</div>
@@ -423,28 +327,24 @@
               <p>Um quem sou eu apresentado de uma forma diferente. Saímos de uma lista de tópicos normal para uma linha do tempo com animações, informações aparecendo aos poucos, ícones e imagens de apoio.</p>
             </div>
           </div>
-        </div>
 
-		<div class="pf-slide" data-category="cliente">
-          <div class="pf-card">
+      <div class="pf-card">
             <div class="pf-media">
-				<video loop muted playsinline>
+				<video loop muted playsinline autoplay>
 					<source src="assets/odonto-mestrado-apresentacao-artigo.mp4" type="video/mp4">
 				</video>
 			</div>
             <div class="pf-body">
               <span class="pf-tag cliente">Cliente</span>
-              <h4>Apresentação de um artigo - Mestrado de Odontologia</h4>
-              <p>Reestruturação de capa e slide de resultados, saindo do texto corrido pra hierarquia visual com destaque no dado que decide.</p>
+              <h4>Apresentação de um artigo para um Mestrado de Odontologia</h4>
+              <p>Reestruturação de capa e slide de resultados, saindo de texto corrido pra hierarquia visual com destaque no dado mais importante.</p>
             </div>
           </div>
-        </div>
 
-        <div class="pf-slide" data-category="pessoal">
-          <div class="pf-card">
+      <div class="pf-card">
             <div class="pf-media">
-				<video loop muted playsinline>
-					<source src="assets/dashboard-piada.mp4" type="video/mp4">
+				<video loop muted playsinline autoplay>
+					<source src="assets/dashboard-piada-completo.mp4" type="video/mp4">
 				</video>
 			</div>
             <div class="pf-body">
@@ -453,12 +353,10 @@
               <p>Boas práticas de visualização de dados em Power BI, sem perder a graça. Dado técnico com uma pitada de Star Wars.</p>
             </div>
           </div>
-        </div>
 
-        <div class="pf-slide" data-category="pessoal">
-          <div class="pf-card">
+      <div class="pf-card">
             <div class="pf-media">
-				<video loop muted playsinline>
+				<video loop muted playsinline autoplay>
 					<source src="assets/nem-8-nem-80.mp4" type="video/mp4">
 				</video>
 			</div>
@@ -468,105 +366,60 @@
               <p>Inspirado em algo que meu avô dizia "Nem 8, nem 80. 40". Um conceito sobre moderação, construído visualmente com o próprio contraste preto e branco da tela.</p>
             </div>
           </div>
-        </div>
 
-        <div class="pf-slide" data-category="pessoal">
-          <div class="pf-card">
+      <div class="pf-card">
             <div class="pf-media">
-				<video loop muted playsinline>
+				<video loop muted playsinline autoplay>
 					<source src="assets/vieses-danca-nao-coisa-de-homem.mp4" type="video/mp4">
 				</video>
 			</div>
             <div class="pf-body">
               <span class="pf-tag pessoal">Pessoal</span>
               <h4>Dança e Vieses</h4>
-              <p>Dois universos que normalmente não se misturam... O tipo de conexão que só sai de um repertório próprio.</p>
+              <p>Dois universos que normalmente não se misturam... Uma aula contando uma história própria onde quase não entrei na dança de salão por ter a crença. O tipo de conexão que só sai de um repertório próprio.</p>
             </div>
           </div>
-        </div>
 
-        <div class="pf-slide" data-category="pessoal">
-          <div class="pf-card">
-            <div class="pf-media">
-				<video loop muted playsinline>
-					<source src="assets/esquema-visual-dikw.mp4" type="video/mp4">
-				</video>
-			</div>
-            <div class="pf-body">
-              <span class="pf-tag pessoal">Pessoal</span>
-              <h4>Do dado à sabedoria</h4>
-              <p>A escada clássica de BI (Dado, Informação, Conhecimento, Sabedoria), redesenhada pra quem nunca ouviu falar de DIKW entender de cara.</p>
-            </div>
-          </div>
-        </div>
 
-        <div class="pf-slide" data-category="pessoal">
-          <div class="pf-card">
+      <div class="pf-card">
             <div class="pf-media">
-				<video loop muted playsinline>
-					<source src="assets/esquema-visual-matriz.mp4" type="video/mp4">
-				</video>
-			</div>
-            <div class="pf-body">
-              <span class="pf-tag pessoal">Pessoal</span>
-              <h4>Matriz com formas de Apresentar dados</h4>
-              <p>Mostrando os diferentes tipos de apresentar dados e classificando-os em uma matriz Visual x Quantidade de Informação.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="pf-slide" data-category="pessoal">
-          <div class="pf-card">
-            <div class="pf-media">
-				<video loop muted playsinline>
+				<video loop muted playsinline autoplay>
 					<source src="assets/excalidraw.mp4" type="video/mp4">
 				</video>
 			</div>
             <div class="pf-body">
               <span class="pf-tag pessoal">Pessoal</span>
               <h4>Rascunho vira estrutura</h4>
-              <p>Do quadro solto no Excalidraw até a ideia ganhar forma — o processo de pensar aparecendo, não só o resultado final.</p>
+              <p>Do quadro solto no Excalidraw até a ideia ganhar forma. Muito interessante para mostrar o todo e mostrando cada uma das partes.</p>
             </div>
           </div>
-        </div>
 
-        <div class="pf-slide" data-category="pessoal">
-          <div class="pf-card">
+      <div class="pf-card">
             <div class="pf-media">
-				<video loop muted playsinline>
+				<video loop muted playsinline autoplay>
 					<source src="assets/cronos-kairos.mp4" type="video/mp4">
 				</video>
 			</div>
             <div class="pf-body">
               <span class="pf-tag pessoal">Pessoal</span>
               <h4>Cronos x Kairós</h4>
-              <p>A mesma informação, três formas diferentes de apresentar — o antes, o meio e o depois acontecendo dentro do próprio GIF.</p>
+              <p>A mesma informação, três formas diferentes de apresentar. O jeito comum (imagem e texto, tudo num slide). Uma opção mais dinâmica. E uma terceira opção trazendo uma referência de um anime (Naruto) para ilustrar o conceito.</p>
             </div>
           </div>
-        </div>
 
-        <div class="pf-slide" data-category="pessoal">
-          <div class="pf-card">
+      <div class="pf-card">
             <div class="pf-media">
-				<video loop muted playsinline>
+				<video loop muted playsinline autoplay>
 					<source src="assets/lebron.mp4" type="video/mp4">
 				</video>
             </div>
             <div class="pf-body">
               <span class="pf-tag pessoal">Pessoal</span>
               <h4>40 mil pontos, uma história</h4>
-              <p>Um marco estatístico do esporte virando narrativa, não só número solto num gráfico.</p>
+              <p>Um marco estatístico do esporte virando narrativa, não só número solto.</p>
             </div>
           </div>
-        </div>
 
-      </div>
-
-      <div class="pf-nav-row">
-        <button class="pf-nav" onclick="pfScroll(-1)" aria-label="Anterior">‹</button>
-        <span class="pf-counter" id="pfCounter">1 / 9</span>
-        <button class="pf-nav" onclick="pfScroll(1)" aria-label="Próximo">›</button>
-      </div>
     </div>
   </div>
 </section>
@@ -577,37 +430,35 @@
     <h2 style="font-size:30px; margin-bottom:20px;">Podemos trabalhar juntos se...</h2>
 
     <div class="servico-tabs" role="group" aria-label="Escolha sua situação">
-      <button type="button" class="servico-tab active" onclick="setServicoTab('tem')">Tem uma apresentação</button>
+      <button type="button" class="servico-tab active" onclick="setServicoTab('tem')">Você JÁ TEM a Trilha pronta</button>
       <span class="tab-ou">ou</span>
-      <button type="button" class="servico-tab" onclick="setServicoTab('naotem')">Ainda não tem uma apresentação pronta</button>
+      <button type="button" class="servico-tab" onclick="setServicoTab('naotem')">Você NÃO TEM uma Trilha estruturada</button>
     </div>
 
     <div class="servico-pair" id="servicoTem">
-      <div class="servico-card">
-        <h4>Diagnóstico RO³TA</h4>
-        <p>Você só quer saber onde ela trava, sem refazer nada ainda. Eu assisto, aplico a lente RO³TA e devolvo o que funciona, o que atrapalha, e o que mudar primeiro.</p>
-        <div class="meta">Reunião (com possibilidade de gravação) · Entregável em relatório ou vídeo comentando slide a slide · Se decidir contratar o Redesenho em até 30 dias, o valor investido aqui é abatido integralmente.</div>
-      </div>
 
       <div class="servico-card">
-        <h4>Redesenho de Apresentação</h4>
-        <p>Os slides já existem, falta a virada visual. Eu dou a clareza sem descartar o que já funciona.</p>
-        <div class="meta">Reuniões de contexto · Entregas em sprints, não só no final · Até 2 rodadas de ajuste incluídas.</div>
+        <h4>Redesenho da Apresentação</h4>
+        <p>Os slides já existem, falta melhorar o visual. Eu ajudo com a clareza sem alterar o conteúdo.</p>
+        <div class="meta">Reuniões de contexto · Entregas em sprints, não só no final.</div>
       </div>
+
     </div>
 
     <div class="servico-pair" id="servicoNaoTem" style="display:none;">
-      <div class="servico-card">
-        <h4>Copiloto RO³TA <span style="color:var(--muted); font-size:13px; font-family:'Instrument Sans',sans-serif;">(mentoria)</span></h4>
-        <p>Você constrói a apresentação, eu seguro sua mão nos pontos certos do caminho. RO³TA Completo resolve essa apresentação. Copiloto te ensina a resolver todas as próximas.</p>
-        <div class="meta">Reuniões de acompanhamento · Construção do roteiro junto com você</div>
-      </div>
 
       <div class="servico-card">
         <h4>RO³TA Completo</h4>
-        <p>Arquitetura e slides do zero, feitos por mim. Você valida, eu executo, com até 2 rodadas de ajuste incluídas.</p>
+        <p>Arquitetura, trilha e slides feitos por mim. Você traz a ideia e valida, eu executo (com até 2 rodadas de ajuste)</p>
         <div class="meta">Reuniões de descoberta · Entrega da apresentação pronta</div>
       </div>
+	
+      <div class="servico-card">
+        <h4>Copiloto RO³TA <span style="color:var(--muted); font-size:13px; font-family:'Instrument Sans',sans-serif;">(mentoria)</span></h4>
+        <p>Você constrói a apresentação, eu te ajudo no processo. Aqui eu te ensino o método RO³TA.</p>
+        <div class="meta">Reuniões de acompanhamento · Construção do roteiro e slides junto com você</div>
+      </div>
+	  
     </div>
   </div>
 </section>
@@ -617,33 +468,32 @@
   <div class="wrap cta">
     <h2 style="font-size:28px;">Como funciona</h2>
     <ol>
-      <li><span class="num">1</span> Preencha o formulário contando o que você precisa</li>
-      <li><span class="num">2</span> Conversamos rapidamente por Google Meet</li>
+      <li><span class="num">1</span> Preencha o formulário me contando o que você precisa.</li>
+      <li><span class="num">2</span> Reunião inicial no Google Meet</li>
       <li><span class="num">3</span> Combinamos escopo e valor antes de começar</li>
     </ol>
-    <a href="https://tally.so/r/b5Q8be" class="cta-button"><!-- AJUSTE: link do Google Forms -->Solicitar um projeto →</a>
+    <a href="https://tally.so/r/b5Q8be" class="cta-button">Solicitar um projeto →</a>
   </div>
 </section>
 
 <!-- SEÇÃO 4.5 — FAQ / OBJEÇÕES -->
 <section id="faq" style="border-bottom:none;">
   <div class="wrap">
-    <h2 style="font-size:30px; margin-bottom:8px;">Perguntas antes de começar</h2>
-    <p class="metodo-intro">O O³ do método também vale pra essa página: se ficou alguma dúvida na sua cabeça, ela provavelmente já está aqui.</p>
-
+    <h2 style="font-size:30px; margin-bottom:8px;">Perguntas frequentes</h2>
+   
     <details class="faq-item">
       <summary>Você entende do meu assunto específico?</summary>
-      <p>Não preciso ser especialista no seu tema pra ajudar na clareza dele — o método parte do seu Repertório, não do meu. Meu trabalho é estrutura e narrativa; o conteúdo técnico continua sendo seu.</p>
+      <p>Não preciso ser especialista no seu tema pra ajudar na sua apresentação. O método parte do seu repertório e do seu conhecimento. Meu trabalho é te ajudar com a estrutura, a narrativa e o visual. O conteúdo técnico continua sendo seu.</p>
     </details>
 
     <details class="faq-item">
       <summary>Quanto tempo demora?</summary>
-      <p><!-- AJUSTE: confirme o prazo real antes de publicar -->Diagnóstico: entrega em poucos dias úteis após a reunião. Redesenho: normalmente algumas semanas, dependendo da complexidade do material — combinado na conversa inicial.</p>
+      <p>Normalmente algumas semanas, mas depende da complexidade e do volume do material. A mentoria tende a ser mais longa, mas tudo isso é discutido e combinado na conversa inicial.</p>
     </details>
 
     <details class="faq-item">
       <summary>Em que formato eu recebo a apresentação?</summary>
-      <p>PowerPoint (PPTX), 100% editável, feito no Office 365. Se preferir Canva ou outra ferramenta, alinhamos isso antes de começar.</p>
+      <p>PowerPoint (PPTX), 100% editável, feito no Office 365. </p>
     </details>
 
     <details class="faq-item">
@@ -653,12 +503,12 @@
 
     <details class="faq-item">
       <summary>Meu conteúdo fica confidencial?</summary>
-      <p>Sim. Nenhum material de cliente é publicado ou usado como exemplo sem remover toda identificação antes.</p>
+      <p>Qualquer material de cliente só é compartilhado com consentimento.</p>
     </details>
 
     <details class="faq-item">
       <summary>E se eu não gostar do resultado?</summary>
-      <p>Por isso as entregas são em sprints, não só no final — você acompanha o andamento e ajusta o rumo antes de chegar na versão final, dentro das rodadas de ajuste incluídas.</p>
+      <p>Todo o escopo é definido no início, antes de começarmos o projeto. Pra minimizar o risco, as entregas são em sprints, não só no final. Com isso você acompanha o andamento antes de chegar na versão final. Uma vez que entrego a versão final, você tem até 2 solicitações de ajuste num período de 30 dias.</p>
     </details>
   </div>
 </section>
@@ -680,100 +530,6 @@
     document.getElementById('servicoNaoTem').style.display = tab === 'naotem' ? 'grid' : 'none';
   }
 
-  // Carrossel do portfólio
-  const pfCarousel = document.getElementById('pfCarousel');
-  const pfSlides = document.querySelectorAll('#pfCarousel .pf-slide');
-  const pfCounter = document.getElementById('pfCounter');
-  const pfFilters = document.getElementById('pfFilters');
-
-  function pfVisibleSlides() {
-    return Array.from(pfSlides).filter(s => s.style.display !== 'none');
-  }
-
-  function pfUpdateCounter() {
-    const visible = pfVisibleSlides();
-    const scrollLeft = pfCarousel.scrollLeft;
-    const idx = Math.round(scrollLeft / pfCarousel.clientWidth);
-    pfCounter.textContent = (Math.min(idx + 1, visible.length) || (visible.length ? 1 : 0)) + ' / ' + visible.length;
-  }
-  pfUpdateCounter();
-
-  function pfScroll(dir) {
-    pfCarousel.scrollBy({ left: dir * pfCarousel.clientWidth, behavior: 'smooth' });
-  }
-
-  // Filtro por categoria (Todos / Cliente / Pessoal)
-  pfFilters.addEventListener('click', (e) => {
-    const btn = e.target.closest('.pf-filter-btn');
-    if (!btn) return;
-    pfFilters.querySelectorAll('.pf-filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const filter = btn.dataset.filter;
-    pfSlides.forEach(slide => {
-      const match = filter === 'todos' || slide.dataset.category === filter;
-      slide.style.display = match ? 'flex' : 'none';
-      const video = slide.querySelector('video');
-      if (video && !match) video.pause();
-    });
-    pfCarousel.scrollTo({ left: 0, behavior: 'instant' });
-    pfUpdateCounter();
-  });
-
-  // Só toca o vídeo do slide visível; pausa os demais (evita vários vídeos rodando ao mesmo tempo)
-  const pfObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const video = entry.target.querySelector('video');
-      const visible = entry.isIntersecting && entry.intersectionRatio > 0.6;
-      if (video) {
-        if (visible) { video.play().catch(() => {}); }
-        else { video.pause(); }
-      }
-    });
-    pfUpdateCounter();
-  }, { root: pfCarousel, threshold: [0, 0.6, 1] });
-
-  pfSlides.forEach(slide => pfObserver.observe(slide));
-
-  // Carrossel dos sintomas (mesmo padrão do portfólio, com filtro por categoria)
-  const sintCarousel = document.getElementById('sintCarousel');
-  const sintSlides = document.querySelectorAll('#sintCarousel .pf-slide');
-  const sintCounter = document.getElementById('sintCounter');
-  const sintFilters = document.getElementById('sintFilters');
-
-  function sintVisibleSlides() {
-    return Array.from(sintSlides).filter(s => s.style.display !== 'none');
-  }
-
-  function sintUpdateCounter() {
-    const visible = sintVisibleSlides();
-    const idx = Math.round(sintCarousel.scrollLeft / sintCarousel.clientWidth);
-    sintCounter.textContent = (Math.min(idx + 1, visible.length) || (visible.length ? 1 : 0)) + ' / ' + visible.length;
-  }
-  sintUpdateCounter();
-
-  function sintScroll(dir) {
-    sintCarousel.scrollBy({ left: dir * sintCarousel.clientWidth, behavior: 'smooth' });
-  }
-
-  sintFilters.addEventListener('click', (e) => {
-    const btn = e.target.closest('.pf-filter-btn');
-    if (!btn) return;
-    sintFilters.querySelectorAll('.pf-filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const filter = btn.dataset.filter;
-    sintSlides.forEach(slide => {
-      const match = filter === 'todos' || slide.dataset.category === filter;
-      slide.style.display = match ? 'flex' : 'none';
-    });
-    sintCarousel.scrollTo({ left: 0, behavior: 'instant' });
-    sintUpdateCounter();
-  });
-
-  const sintObserver = new IntersectionObserver((entries) => {
-    entries.forEach(() => sintUpdateCounter());
-  }, { root: sintCarousel, threshold: [0, 0.6, 1] });
-
-  sintSlides.forEach(slide => sintObserver.observe(slide));
 </script>
 
 </body>
